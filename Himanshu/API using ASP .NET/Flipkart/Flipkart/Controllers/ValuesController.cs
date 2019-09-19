@@ -17,6 +17,7 @@ namespace Flipkart.Controllers
         [HttpGet]
         public IEnumerable<BrandResponse> Get()
         {
+            
             var items = db.Brands.Select(s => new BrandResponse() { BrandId = s.BrandId , BrandName = s.BrandName});
             return items;
         }
@@ -26,6 +27,7 @@ namespace Flipkart.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            //return "value";
             var items = db.Brands.Find(id);
             return items.BrandName;
         }
@@ -36,7 +38,6 @@ namespace Flipkart.Controllers
         {
             db.Brands.Add(value);
             db.SaveChanges();
-            //Console.WriteLine(value);
         }
 
         // PUT api/values/5

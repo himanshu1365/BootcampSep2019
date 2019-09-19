@@ -42,8 +42,13 @@ body{
     width: 74%;
     height: 68px;
     border-radius: 26px;
+    color: white;
 }
 
+.result-screen p{
+    /* border: none; */
+    text-decoration: none;
+}
 .calculator-buttons{
     padding: 10px 20px;
 }

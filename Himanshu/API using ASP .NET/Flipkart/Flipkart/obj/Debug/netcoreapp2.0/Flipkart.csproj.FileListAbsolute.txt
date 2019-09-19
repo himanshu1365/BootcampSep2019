@@ -1,0 +1,10 @@
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\bin\Debug\netcoreapp2.0\Flipkart.deps.json
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\bin\Debug\netcoreapp2.0\Flipkart.runtimeconfig.json
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\bin\Debug\netcoreapp2.0\Flipkart.runtimeconfig.dev.json
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\bin\Debug\netcoreapp2.0\Flipkart.dll
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\bin\Debug\netcoreapp2.0\Flipkart.pdb
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\obj\Debug\netcoreapp2.0\Flipkart.csproj.CoreCompileInputs.cache
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\obj\Debug\netcoreapp2.0\Flipkart.AssemblyInfoInputs.cache
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\obj\Debug\netcoreapp2.0\Flipkart.AssemblyInfo.cs
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\obj\Debug\netcoreapp2.0\Flipkart.dll
+C:\Users\himanshu.chauhan\source\repos\Flipkart\Flipkart\obj\Debug\netcoreapp2.0\Flipkart.pdb

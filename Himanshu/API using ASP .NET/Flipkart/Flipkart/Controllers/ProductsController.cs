@@ -28,9 +28,9 @@ namespace Flipkart.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            //var items = db.Products.Find(id);
-            //return items.Pname;
-            return "hello";
+            var items = db.Products.Find(id);
+            return items.Pname;
+            
         }
         
         // POST: api/Products
@@ -43,14 +43,20 @@ namespace Flipkart.Controllers
         
         // PUT: api/Products/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Products value)
         {
+            var entity = db.Products.FirstOrDefault(e => e.PId == id);
+            entity.Pname = value.Pname;
+            db.SaveChanges();
         }
         
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Products/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var items = db.Products.Find(id);
+            db.Products.Remove(items);
+            db.SaveChanges();
         }
     }
 }

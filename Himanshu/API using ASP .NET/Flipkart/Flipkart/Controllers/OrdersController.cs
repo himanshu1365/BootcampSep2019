@@ -17,24 +17,28 @@ namespace Flipkart.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public IEnumerable<OrderResponse> Get()
+        public ObjectResult Get()
         {
-            var items = db.Orders.Select(s => new OrderResponse() { Price = s.Price, Quantity = s.Quantity, Pname = s.Pname });
+            List<Orders> ord = db.Orders.ToList();
+            List<Brands> brand = db.Brands.ToList();
+            var record = (from o in ord
+                          join b in brand on o.BrandId equals b.BrandId into table1
+                          from i in table1.ToList()
+                          select new
+                          {
+                              Pname = o.Pname,
+                              Price = o.Price
+                          });
 
-            return items;
+            return Ok(record);
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
-            //var items = db.Brands.Join(Orders)
-            //var items = db.Orders.Join(Brands,
-               // dc => dc.BrandId,
-                //d => d.BrandId,
-                //(dc,d) => new { Orders = dc, Brands = d})
-                //.;
-            return "value";
+            var items = db.Orders.Find(id);
+            return items.Pname;
         }
         
         // POST: api/Orders

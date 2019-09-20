@@ -13656,11 +13656,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\himanshu.chauhan\\source\\repos\\Flipkart\\Flipkart\\Flipkart.csproj",
+      "projectUniqueName": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\API using ASP .NET\\Flipkart\\Flipkart\\Flipkart.csproj",
       "projectName": "Flipkart",
-      "projectPath": "C:\\Users\\himanshu.chauhan\\source\\repos\\Flipkart\\Flipkart\\Flipkart.csproj",
+      "projectPath": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\API using ASP .NET\\Flipkart\\Flipkart\\Flipkart.csproj",
       "packagesPath": "C:\\Users\\himanshu.chauhan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\himanshu.chauhan\\source\\repos\\Flipkart\\Flipkart\\obj\\",
+      "outputPath": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\API using ASP .NET\\Flipkart\\Flipkart\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

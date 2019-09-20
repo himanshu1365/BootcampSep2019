@@ -73,7 +73,7 @@ namespace Flipkart.Models
                 entity.Property(e => e.PId).HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.BrandId)
-                    .HasColumnName("Brand_ID")
+                    .HasColumnName("BrandId")
                     .HasColumnType("numeric(18, 0)");
 
                 entity.Property(e => e.Pname)

@@ -9,6 +9,5 @@ namespace Flipkart.CustomModels
     {
         public int PId { get; set; }
         public string Pname { get; set; }
-        public int? BrandId { get; set; }
     }
 }

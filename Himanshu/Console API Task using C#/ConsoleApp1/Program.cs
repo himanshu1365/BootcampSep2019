@@ -6,6 +6,8 @@ namespace ConsoleApp1
     class Program
     {
         Dictionary<string, int> dict;
+        static string path = "E:\\Sample.txt";
+
         Program()
         {
             dict = new Dictionary<string,int>();
@@ -15,7 +17,7 @@ namespace ConsoleApp1
             dict.Add("city",3);
             dict.Add("state",4);
         }
-        string path = "E:\\Sample.txt";
+        
         void getMenu()
         {
             Console.WriteLine("Options:");
@@ -29,7 +31,7 @@ namespace ConsoleApp1
 
         void SearchStudentByName()
         {
-            String name, line, searchName;
+            String name, line;
             Console.Write("Enter student name to search : ");
             name = Console.ReadLine();
             char[] sep = { ' ' };

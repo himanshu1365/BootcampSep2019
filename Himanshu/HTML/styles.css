@@ -48,6 +48,9 @@ body{
 .result-screen p{
     /* border: none; */
     text-decoration: none;
+    float:right;
+    margin-right: 10px;
+    font-size: 20px;
 }
 .calculator-buttons{
     padding: 10px 20px;
@@ -72,6 +75,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    outline: 0;
 }
 
 .button:hover{

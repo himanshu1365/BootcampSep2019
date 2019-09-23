@@ -3,17 +3,24 @@ class Calculator{
         this.num = ""
     }
     getInput = (obj)=>{
-        this.num += obj
-        let len = this.num.length-1;
         if(obj == 0 && this.num == ""){
-            return;
+            return
         }
-        document.getElementById('result').innerHTML += obj      
+        let lastElement = this.num[this.num.length-1]
+        
+        if(this.num != "" && (lastElement.charCodeAt(0)>=42 && lastElement.charCodeAt(0)<=47)){
+            this.num += obj
+            document.getElementById('result').innerHTML = obj
+            return
+        }
+        this.num += obj
+        document.getElementById('result').innerHTML += obj             
     }
 
     getOperation = (obj) =>{
-        this.num += obj
-        document.getElementById('result').innerHTML = ""
+        if(this.num != ""){
+            this.num += obj
+        }
     }
 
     showResult = ()=>{

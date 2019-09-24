@@ -18,15 +18,19 @@ class Calculator{
     }
 
     getOperation = (obj) =>{
-        if(this.num != ""){
+        let lastOperation = this.num[this.num.length-1]
+        if(this.num != "" && !(lastOperation.charCodeAt(0)>=42 && lastOperation.charCodeAt(0)<=47)){
             this.num += obj
         }
     }
 
     showResult = ()=>{
-        let result = eval(this.num)
-        document.getElementById('result').innerHTML = result
-        this.num = 0
+        let lastOperation = this.num[this.num.length-1]
+        if(lastOperation.charCodeAt(0)>=42 && lastElement.charCodeAt(0)<=57){
+            let result = eval(this.num)
+            document.getElementById('result').innerHTML = result
+            this.num = 0
+        }
     }
 
     clearOperation = ()=>{

@@ -1,10 +1,10 @@
 $(document).ready(function(){
     $(".login-button").click(function(){
         $('.login-error-message').empty();
+        checkStatus = checkValidation();
         let studentDetail = {}
         studentDetail.Username = $("#userID").val();
         studentDetail.password = $("#userPassword").val();
-        console.log(studentDetail.Username)
         $.ajax({
             type:"POST",
             url: "http://localhost:52379/login",
@@ -56,10 +56,32 @@ $(document).ready(function(){
         $('#user-icon').css({'color':'#38F6F9'})
     }).focusout(function(){
         $('#user-icon').css({'color':'black'})
+        if($('#userID').val().length == 0){
+            $('#user-error-message').html("Username cannot be empty")
+            return
+        }
+        $('#user-error-message').empty();
     })
     $('#userPassword').focus(function(){
         $('#pass-icon').css({'color':'#38F6F9'})
     }).focusout(function(){
         $('#pass-icon').css({'color':'black'})
     })
+
+    $('#userID').keypress(function(){
+        if($('#userID').val().length < 3){
+            $('#user-error-message').html("Minimum character should be of 3 characters")
+            return
+        }
+        $('#user-error-message').empty();
+    })
+
+    $('#userPassword').keypress(function(){
+        if($('#userPassword').val().length < 8){
+            $('#password-error-message').html("Password should of 8 length")
+            return
+        }
+        $('#password-error-message').empty();
+    })
 })
+

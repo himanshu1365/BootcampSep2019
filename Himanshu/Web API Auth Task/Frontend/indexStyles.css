@@ -106,3 +106,9 @@ input:focus{
     color: white;
     border: 2px solid orange;
 }
+
+#user-error-message, #password-error-message{
+    color: red;
+    margin-left: 55px;
+    font-size: 12px;
+}

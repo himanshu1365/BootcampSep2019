@@ -1,7 +1,10 @@
 $(document).ready(function(){
+    
     $(".login-button").click(function(){
         $('.login-error-message').empty();
-        checkStatus = checkValidation();
+        if(checkErrorStatus){
+            return
+        }
         let studentDetail = {}
         studentDetail.Username = $("#userID").val();
         studentDetail.password = $("#userPassword").val();
@@ -19,7 +22,7 @@ $(document).ready(function(){
                 }
             },
             error:function(){
-                console.log('failed')
+
             }
         })
     })
@@ -42,12 +45,11 @@ $(document).ready(function(){
                     $(location).attr('href','login.html')
                 }
                 else{
-                    console.log('User found')
                     $('.error-message').html("User already existed")
                 }
             },
             error: function(){
-                console.log('fail')
+
             }
         })
     })
@@ -58,22 +60,33 @@ $(document).ready(function(){
         $('#user-icon').css({'color':'black'})
         if($('#userID').val().length == 0){
             $('#user-error-message').html("Username cannot be empty")
+            
             return
         }
         $('#user-error-message').empty();
+        
     })
+
     $('#userPassword').focus(function(){
         $('#pass-icon').css({'color':'#38F6F9'})
     }).focusout(function(){
         $('#pass-icon').css({'color':'black'})
+        if($('#userPassword').val().length < 8){
+            $('#password-error-message').html("Password cannot be empty")
+            return
+        }
+        $('#password-error-message').empty();
+        
     })
 
     $('#userID').keypress(function(){
         if($('#userID').val().length < 3){
             $('#user-error-message').html("Minimum character should be of 3 characters")
+            
             return
         }
         $('#user-error-message').empty();
+        
     })
 
     $('#userPassword').keypress(function(){
@@ -85,3 +98,12 @@ $(document).ready(function(){
     })
 })
 
+checkErrorStatus = ()=>{
+    let a,b;
+    a = $('#userID').val().length;
+    b= $('#userPassword').val().length;
+    if(a!=0 || b!=0){
+        return true;
+    }
+    return false;
+}

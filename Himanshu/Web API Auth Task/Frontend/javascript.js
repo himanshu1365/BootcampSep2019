@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $(".login-button").click(function(){
+        $('.login-error-message').empty();
         let studentDetail = {}
         studentDetail.Username = $("#userID").val();
         studentDetail.password = $("#userPassword").val();
@@ -14,7 +15,7 @@ $(document).ready(function(){
                     $(location).attr('href','home.html')
                 }
                 else{
-                    
+                    $('.login-error-message').html("Username or password is incorrect")
                 }
             },
             error:function(){

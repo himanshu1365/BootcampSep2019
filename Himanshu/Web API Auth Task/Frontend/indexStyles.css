@@ -82,3 +82,8 @@ body{
 input:focus{
     border-bottom: 1px solid #38F6F9;
 }
+.login-error-message{
+    text-align: center;
+    color: red;
+    font-family:'Bitter';
+}

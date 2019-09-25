@@ -51,4 +51,15 @@ $(document).ready(function(){
             }
         })
     })
+
+    $('#userID').focus(function(){
+        $('#user-icon').css({'color':'#38F6F9'})
+    }).focusout(function(){
+        $('#user-icon').css({'color':'black'})
+    })
+    $('#userPassword').focus(function(){
+        $('#pass-icon').css({'color':'#38F6F9'})
+    }).focusout(function(){
+        $('#pass-icon').css({'color':'black'})
+    })
 })

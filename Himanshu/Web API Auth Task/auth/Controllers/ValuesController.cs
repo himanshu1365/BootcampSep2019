@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using auth.Models;
+using auth.CustomModels;
 
 namespace auth.Controllers
 {
@@ -13,26 +14,29 @@ namespace auth.Controllers
     public class ValuesController : Controller
     {
         auth_databaseContext db = new auth_databaseContext();
-        
-        // POST signup
-        //[EnableCors("AllowedOrigins")]
-        [HttpPost]
-        public bool Post([FromBody] UserData val)
-        {
-            var entity = db.UserData.Select(s => new UserData() { Username = s.Username, Email = s.Email }).Where(s => s.Email == val.Email).ToList();
-            if(entity.Count() == 0)
-            {
-                db.UserData.Add(val);
-                db.SaveChanges();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
-        }
 
-       
+        //// POST signup
+        [EnableCors("ApiCorsPolicy")]
+        [HttpPost]
+        public bool Post([FromBody] CustomJoinedDetails val)
+        {
+            var entity = db.UserDetails.Where(s => s.Email == val.Email).ToList();
+            if (entity.Count() == 0)
+            {
+                UserPassword userPassword = new UserPassword
+                {
+                    Username = val.Username,
+                    Password = val.Password
+                };
+                UserDetails userDetails = new UserDetails
+                {
+                    Email = val.Email,
+                    UsernameNavigation = userPassword
+                };
+                db.UserDetails.Add(userDetails);
+                    return true;
+            }
+            return false;
+        }
     }
 }

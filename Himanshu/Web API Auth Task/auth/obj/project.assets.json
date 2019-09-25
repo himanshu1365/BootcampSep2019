@@ -13704,11 +13704,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\himanshu.chauhan\\source\\repos\\auth\\auth\\auth.csproj",
+      "projectUniqueName": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\Web API Auth Task\\auth\\auth.csproj",
       "projectName": "auth",
-      "projectPath": "C:\\Users\\himanshu.chauhan\\source\\repos\\auth\\auth\\auth.csproj",
+      "projectPath": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\Web API Auth Task\\auth\\auth.csproj",
       "packagesPath": "C:\\Users\\himanshu.chauhan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\himanshu.chauhan\\source\\repos\\auth\\auth\\obj\\",
+      "outputPath": "C:\\Users\\himanshu.chauhan\\Desktop\\BootcampSep2019\\Himanshu\\Web API Auth Task\\auth\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -28,7 +28,7 @@ namespace auth
             {
                 options.AddPolicy("ApiCorsPolicy", builder =>
                 {
-                    builder.WithOrigins("http://127.0.0.1:5500").AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
                 });
             });
             services.AddMvc();

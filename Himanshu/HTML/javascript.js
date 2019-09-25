@@ -25,8 +25,8 @@ class Calculator{
     }
 
     showResult = ()=>{
-        let lastOperation = this.num[this.num.length-1]
-        if(lastOperation.charCodeAt(0)>=42 && lastElement.charCodeAt(0)<=57){
+        let lastElement = this.num[this.num.length-1]
+        if(lastElement.charCodeAt(0)>=42 && lastElement.charCodeAt(0)<=57){
             let result = eval(this.num)
             document.getElementById('result').innerHTML = result
             this.num = 0

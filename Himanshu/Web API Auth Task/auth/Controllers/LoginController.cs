@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using auth.Models;
 
 namespace auth.Controllers
 {
@@ -11,6 +12,7 @@ namespace auth.Controllers
     [Route("login")]
     public class LoginController : Controller
     {
+        auth_databaseContext db = new auth_databaseContext();
         // GET: login
         [HttpGet]
         public IEnumerable<string> Get()
@@ -27,8 +29,17 @@ namespace auth.Controllers
         
         // POST: login
         [HttpPost]
-        public void Post([FromBody]string value)
+        public bool Post([FromBody]UserPassword value)
         {
+            var entity = db.UserPassword.Where(s => s.Username == value.Username && s.Password == value.Password).ToList();
+            if(entity.Count() != 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
         

@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     $(".login-button").click(function(){
         $('.login-error-message').empty();
-        if(checkErrorStatus){
+        if(!checkErrorStatus()){
             return
         }
         let studentDetail = {}
@@ -21,9 +21,7 @@ $(document).ready(function(){
                     $('.login-error-message').html("Username or password is incorrect")
                 }
             },
-            error:function(){
-
-            }
+            error:function(){ }
         })
     })
 
@@ -48,9 +46,7 @@ $(document).ready(function(){
                     $('.error-message').html("User already existed")
                 }
             },
-            error: function(){
-
-            }
+            error: function(){ }
         })
     })
 
@@ -60,7 +56,6 @@ $(document).ready(function(){
         $('#user-icon').css({'color':'black'})
         if($('#userID').val().length == 0){
             $('#user-error-message').html("Username cannot be empty")
-            
             return
         }
         $('#user-error-message').empty();
@@ -71,30 +66,12 @@ $(document).ready(function(){
         $('#pass-icon').css({'color':'#38F6F9'})
     }).focusout(function(){
         $('#pass-icon').css({'color':'black'})
-        if($('#userPassword').val().length < 8){
+        if($('#userPassword').val().length  == 0){
             $('#password-error-message').html("Password cannot be empty")
             return
         }
         $('#password-error-message').empty();
         
-    })
-
-    $('#userID').keypress(function(){
-        if($('#userID').val().length < 3){
-            $('#user-error-message').html("Minimum character should be of 3 characters")
-            
-            return
-        }
-        $('#user-error-message').empty();
-        
-    })
-
-    $('#userPassword').keypress(function(){
-        if($('#userPassword').val().length < 8){
-            $('#password-error-message').html("Password should of 8 length")
-            return
-        }
-        $('#password-error-message').empty();
     })
 })
 

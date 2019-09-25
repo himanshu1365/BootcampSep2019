@@ -13,19 +13,6 @@ namespace auth.Controllers
     public class LoginController : Controller
     {
         auth_databaseContext db = new auth_databaseContext();
-        // GET: login
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: login/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
         
         // POST: login
         [HttpPost]

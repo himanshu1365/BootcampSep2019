@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using auth.Models;
 using auth.CustomModels;
 
+
 namespace auth.Controllers
 {
     [Produces("application/json")]
@@ -23,10 +24,11 @@ namespace auth.Controllers
             var entity = db.UserDetails.Where(s => s.Email == val.Email).ToList();
             if (entity.Count() == 0)
             {
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(val.Password);
                 UserPassword userPassword = new UserPassword
                 {
                     Username = val.Username,
-                    Password = val.Password
+                    Password = hashedPassword
                 };
                 UserDetails userDetails = new UserDetails
                 {
@@ -34,7 +36,8 @@ namespace auth.Controllers
                     UsernameNavigation = userPassword
                 };
                 db.UserDetails.Add(userDetails);
-                    return true;
+                db.SaveChanges();
+                return true;
             }
             return false;
         }

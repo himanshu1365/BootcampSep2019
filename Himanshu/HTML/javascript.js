@@ -1,10 +1,16 @@
 class Calculator{
     constructor(){
-        this.num = ""
+        this.num = "",
+        this.equalTo = false
     }
     getInput = (obj)=>{
         if(obj == 0 && this.num == ""){
             return
+        }
+        if(this.equalTo == true){
+            document.getElementById('result').innerHTML = ""
+            this.equalTo = false
+
         }
         let lastElement = this.num[this.num.length-1]
         
@@ -26,22 +32,24 @@ class Calculator{
 
     showResult = ()=>{
         let lastOperation = this.num[this.num.length-1]
-        if(lastOperation.charCodeAt(0)>=42 && lastElement.charCodeAt(0)<=57){
+        if(lastOperation.charCodeAt(0)>=42 && lastOperation.charCodeAt(0)<=57){
             let result = eval(this.num)
             document.getElementById('result').innerHTML = result
-            this.num = 0
+            //this.num = ""
+            this.equalTo = true
         }
     }
 
     clearOperation = ()=>{
-        this.num = 0
+        this.num = ""
         document.getElementById('result').innerHTML = ""
     }
 
     clearLastElement = ()=>{
-        this.num = this.num.slice(0,this.num.length-1);
+        let temp = eval(this.num).toString();
+        this.num = temp.slice(0,temp.length-1);
         document.getElementById('result').innerHTML = this.num;
     }
 }
 
-const cal = new Calculator()
+const cal = new Calculator();

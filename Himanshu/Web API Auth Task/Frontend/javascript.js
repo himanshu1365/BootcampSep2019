@@ -11,21 +11,19 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url: "http://localhost:52379/login",
-            headers: {
-                "Username" : studentDetail.Username,
-                "Password" : studentDetail.password
-            },
-            //data:JSON.stringify(studentDetail),
+            // headers: {
+            //     "Username" : studentDetail.Username,
+            //     "Password" : studentDetail.password
+            // },
+            data:JSON.stringify(studentDetail),
             contentType:"application/json; charset=utf-8",
             success:function(data, success){
-                if(data){
-                    $(location).attr('href','home.html')
-                }
-                else{
-                    $('.login-error-message').html("Username or password is incorrect")
-                }
+                localStorage.setItem('userToken',data.token)
+                $(location).attr('href','home.html')
             },
-            error:function(){ }
+            error:function(msg){ 
+                $('.login-error-message').html(msg.responseText)
+            }
         })
     })
 
@@ -43,14 +41,12 @@ $(document).ready(function(){
             data:JSON.stringify(studentDetail),
             contentType:"application/json; charset=utf-8",
             success: function(data,success){
-                if(data){
-                    $(location).attr('href','index.html')
-                }
-                else{
-                    $('.error-message').html("User already existed")
-                }
+
+                $(location).attr('href','index.html')
             },
-            error: function(){ }
+            error: function(msg){ 
+                $('.error-message').html(msg.responseText)
+            }
         })
     })
 
@@ -75,7 +71,6 @@ $(document).ready(function(){
             return
         }
         $('#password-error-message').empty();
-        
     })
 })
 

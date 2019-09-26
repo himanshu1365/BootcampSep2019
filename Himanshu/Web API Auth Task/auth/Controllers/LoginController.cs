@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using auth.Models;
+using Microsoft.Extensions.Primitives;
 
 namespace auth.Controllers
 {
@@ -13,13 +14,21 @@ namespace auth.Controllers
     public class LoginController : Controller
     {
         auth_databaseContext db = new auth_databaseContext();
-        
         // POST: login
         [HttpPost]
-        public bool Post([FromBody]UserPassword value)
+        public bool Post([FromBody]dynamic value)
         {
-            var entity = db.UserPassword.Where(s => s.Username == value.Username && s.Password == value.Password).ToList();
-            if(entity.Count() != 0)
+            StringValues userValue;
+            StringValues passwordValue;
+            Request.Headers.TryGetValue("Username", out userValue);
+            Request.Headers.TryGetValue("Password", out passwordValue);
+
+            String username = userValue.FirstOrDefault();
+            String password = passwordValue.FirstOrDefault();
+
+
+            var entity = db.UserPassword.Where(s => s.Username == username && s.Password == password).ToList();
+            if (entity.Count() != 0)
             {
                 return true;
             }

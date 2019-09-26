@@ -27,10 +27,16 @@ namespace auth.Controllers
             String password = passwordValue.FirstOrDefault();
 
 
-            var entity = db.UserPassword.Where(s => s.Username == username && s.Password == password).ToList();
-            if (entity.Count() != 0)
+            var entity = db.UserPassword.Where(s => s.Username == username).FirstOrDefault();
+
+            if (entity.Username != null)
             {
-                return true;
+                bool validPassword = BCrypt.Net.BCrypt.Verify(password, entity.Password);
+                if (validPassword)
+                {
+                    return true;
+                }
+                return false;
             }
             else
             {

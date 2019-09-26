@@ -19,7 +19,7 @@ namespace auth.Controllers
         //// POST signup
         [EnableCors("ApiCorsPolicy")]
         [HttpPost]
-        public bool Post([FromBody] CustomJoinedDetails val)
+        public IActionResult Post([FromBody] CustomJoinedDetails val)
         {
             var entity = db.UserDetails.Where(s => s.Email == val.Email).ToList();
             if (entity.Count() == 0)
@@ -37,9 +37,9 @@ namespace auth.Controllers
                 };
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
-                return true;
+                return Ok(true);
             }
-            return false;
+            return BadRequest("User already Existed");
         }
     }
 }

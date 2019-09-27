@@ -23,6 +23,7 @@ namespace auth.Controllers
 
         private IConfiguration _config;
         private string tokenString;
+        //private string picurl = url;
 
         public LoginController(IConfiguration config)
         {

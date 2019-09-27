@@ -6,10 +6,6 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using auth.Models;
 using auth.CustomModels;
-using Google.Apis.Gmail.v1;
-using Google.Apis.Auth.OAuth2;
-using System.Threading;
-using Google.Apis.Util.Store;
 
 namespace auth.Controllers
 {
@@ -18,14 +14,15 @@ namespace auth.Controllers
     public class ValuesController : Controller
     {
         auth_databaseContext db = new auth_databaseContext();
-        private string url;
+        //private string url;
         
         // POST signup
         [EnableCors("ApiCorsPolicy")]
         [HttpPost]
         public IActionResult Post([FromBody] CustomJoinedDetails val)
         {
-            var entity = db.UserDetails.Where(s => s.Email == val.Email).ToList();
+            var entity = db.UserDetails.Where(s => s.Email == val.Email || s.Username == val.Username).ToList();
+
             if (entity.Count() == 0)
             {
                 var hashedPassword = BCrypt.Net.BCrypt.HashPassword(val.Password);
@@ -37,15 +34,23 @@ namespace auth.Controllers
                 UserDetails userDetails = new UserDetails
                 {
                     Email = val.Email,
+                    CollegeId = val.CollegeId,
+                    CollegeName = val.CollegeName,
                     UsernameNavigation = userPassword
                 };
                 db.UserDetails.Add(userDetails);
                 db.SaveChanges();
                 return Ok(true);
             }
-            return BadRequest("User already Existed");
+            else if (entity[0].Username == val.Username)
+            {
+                return BadRequest("Username already Existed");
+            }
+            else
+            {
+                return BadRequest("Email ID already Existed");
+            }
         }
-
 
 
         [HttpPost()]
@@ -75,11 +80,11 @@ namespace auth.Controllers
             return value;
         }
 
-        [HttpGet()]
-        [Route("googleImage")]
-        public string Get()
-        {
-            return url;
-        }
+        //[HttpGet()]
+        //[Route("googleImage")]
+        //public string Get()
+        //{
+        //    return url;
+        //}
     }
 }

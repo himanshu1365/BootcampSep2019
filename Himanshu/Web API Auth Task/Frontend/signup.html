@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="signupStyles.css">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="76792830091-ichk79q6li3a90fk2u726dan6ip2dq29.apps.googleusercontent.com">
         <script src="javascript.js"></script>
-
     </head>
     <body>
         <div class="container">
@@ -23,6 +24,7 @@
                     <input type="text" id="collegeName" placeholder="College Name" class="w-100">
                     <input type="text" id="collegeID" placeholder="College ID" class="w-100">
                     <input type="button" class="save-details justify-content-center" value="Signup">
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </div>
             </div>
         </div>

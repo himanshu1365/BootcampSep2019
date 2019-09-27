@@ -68,6 +68,8 @@ $(document).ready(function(){
         }
         $('#password-error-message').empty();
     })
+
+
 })
 
 checkErrorStatus = ()=>{
@@ -78,4 +80,26 @@ checkErrorStatus = ()=>{
         return true;
     }
     return false;
+}
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var googleData = {
+        "Username":profile.getGivenName(),
+        "Email":profile.getEmail(),
+        "Password":profile.getImageUrl()
+    }
+    $.ajax({
+        type:'POST',
+        url:"http://localhost:52379/signup/googleDetails",
+        data: JSON.stringify(googleData),
+        contentType: "application/json; charset=utf-8",
+        success: function(data,success){
+
+            $(location).attr('href','home.html');
+        },
+        error: function(data,success){
+            console.log('Error')
+        }
+    })
 }

@@ -27,6 +27,16 @@ namespace auth
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+                options.ClientId = Configuration["Authentication:Google:ClientId"];
+                options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                //options.ClientId = googleAuthNSection["76792830091-ichk79q6li3a90fk2u726dan6ip2dq29.apps.googleusercontent.com"];
+                //options.ClientSecret = googleAuthNSection["A-JD4ajRue2hH_WvXoBBIgyY"];
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("ApiCorsPolicy", builder =>

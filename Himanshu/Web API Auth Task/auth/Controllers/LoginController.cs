@@ -29,19 +29,18 @@ namespace auth.Controllers
             _config = config;
         }
 
-        [HttpGet("loginAuthentication")]
         [Authorize]
-
+        [HttpGet("loginAuthentication")]
         public IActionResult Get()
         {
             try
             {
                 var currentUser = HttpContext.User;
+
                 return Ok(true);
             }
             catch(Exception e)
             {
-
             }
             return BadRequest();
         }
@@ -87,11 +86,13 @@ namespace auth.Controllers
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
                 _config["Jwt:Issuer"],
                 claims, 
-                expires: DateTime.Now.AddSeconds(30),
+                expires: DateTime.Now.AddMinutes(1),
                 signingCredentials: credentials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        
 
     }
 

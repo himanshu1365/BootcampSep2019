@@ -87,7 +87,7 @@ namespace auth.Controllers
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
                 _config["Jwt:Issuer"],
                 claims, 
-                expires: DateTime.Now.AddMinutes(200),
+                expires: DateTime.Now.AddSeconds(30),
                 signingCredentials: credentials
             );
             return new JwtSecurityTokenHandler().WriteToken(token);

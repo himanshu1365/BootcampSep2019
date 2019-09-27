@@ -11,10 +11,6 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             url: "http://localhost:52379/login",
-            // headers: {
-            //     "Username" : studentDetail.Username,
-            //     "Password" : studentDetail.password
-            // },
             data:JSON.stringify(studentDetail),
             contentType:"application/json; charset=utf-8",
             success:function(data, success){

@@ -32,10 +32,9 @@ class Calculator{
 
     showResult = ()=>{
         let lastOperation = this.num[this.num.length-1]
-        if(lastOperation.charCodeAt(0)>=42 && lastOperation.charCodeAt(0)<=57){
+        if(lastOperation.charCodeAt(0)>=48 && lastOperation.charCodeAt(0)<=57){
             let result = eval(this.num)
             document.getElementById('result').innerHTML = result
-            //this.num = ""
             this.equalTo = true
         }
     }
@@ -49,6 +48,16 @@ class Calculator{
         let temp = eval(this.num).toString();
         this.num = temp.slice(0,temp.length-1);
         document.getElementById('result').innerHTML = this.num;
+    }
+
+    rootOperation = ()=>{
+        let lastElement = document.getElementById("result").value;
+        console.log(lastElement)
+        // if(lastElement.charCodeAt(0)>=48 && lastElement.charCodeAt(0)<=57){
+        //     let square = Math.sqrt(parseInt(lastElement,10));
+        //     console.log(square)
+        // }
+
     }
 }
 

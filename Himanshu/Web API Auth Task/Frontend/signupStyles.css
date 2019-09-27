@@ -3,28 +3,17 @@ body{
     background-size: cover;
 }
 
-.w-40{
-    width: 40% !important;
-}
-
 .text-header{
     text-align: center;
     font-size: 4em;
     font-family:'Bitter';
 }
-.card{
-    background-color: transparent;
-    border: none;
-}
-.error-message{
-    color: red;
-    font-family: 'PT Sans Narrow';
-    font-size: 1.4em;
-    text-align: center;
-}
 
-.card-body{
-    padding: 0px 60px;
+.custom-card{
+    background-color: transparent;
+    width: 48%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 input:not(.save-details){
@@ -35,6 +24,11 @@ input:not(.save-details){
     margin-bottom: 10px;
     background-color: transparent;
     color:white;
+}
+
+input:focus{
+    border: 2px solid #29E4D6;
+
 }
 
 ::placeholder{
@@ -53,9 +47,4 @@ input:not(.save-details){
     text-align: center;
     cursor: pointer;
     float: right;
-}
-
-input:focus{
-    border: 2px solid #29E4D6;
-
 }

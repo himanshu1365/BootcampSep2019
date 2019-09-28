@@ -14,6 +14,7 @@ body{
     width: 48%;
     margin: 0 auto;
     padding: 10px;
+    text-align: center;
 }
 
 input:not(.save-details){
@@ -46,5 +47,18 @@ input:focus{
     color: white;
     text-align: center;
     cursor: pointer;
-    float: right;
+}
+
+
+.or-text{
+    font-family: 'Bitter';
+    font-size: 20px;
+    color: white;
+}
+
+
+.center-google-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

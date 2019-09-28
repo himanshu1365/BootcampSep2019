@@ -58,17 +58,19 @@ namespace auth.Controllers
 
         public CustomGoogleDetails Post([FromBody] CustomGoogleDetails value)
         {
-            var entity = db.UserDetails.Where(s => s.Username == value.Username).ToList();
+            char[] sep = {'.'};
+            string[] username = value.Email.Split(sep,2,StringSplitOptions.None);
+            var entity = db.UserDetails.Where(s => s.Username == username[0]).ToList();
             if(entity.Count() == 0)
             {
                 UserPassword userPassword = new UserPassword
                 {
-                    Username = value.Username,
+                    Username = username[0],
                     Password = value.Password
                 };
                 UserDetails userDetails = new UserDetails
                 {
-                    Username = value.Username,
+                    Username = username[0],
                     Email = value.Email
 
                 };

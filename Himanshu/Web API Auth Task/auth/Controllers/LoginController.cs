@@ -51,15 +51,6 @@ namespace auth.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]UserPassword value)
         {
-            //StringValues userValue;
-            //StringValues passwordValue;
-            //Request.Headers.TryGetValue("Username", out userValue);
-            //Request.Headers.TryGetValue("Password", out passwordValue);
-
-            //String username = userValue.FirstOrDefault();
-            //String password = passwordValue.FirstOrDefault();
-
-
             var entity = db.UserPassword.Where(s => s.Username == value.Username).FirstOrDefault();
 
             if (entity.Username != null)
@@ -92,9 +83,6 @@ namespace auth.Controllers
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-        
-
     }
 
 }

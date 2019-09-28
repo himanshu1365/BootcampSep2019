@@ -95,7 +95,6 @@ function onSignIn(googleUser) {
         data: JSON.stringify(googleData),
         contentType: "application/json; charset=utf-8",
         success: function(data,success){
-
             $(location).attr('href','home.html');
         },
         error: function(data,success){

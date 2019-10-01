@@ -7,7 +7,6 @@ const routes = {
 
 module.exports = (req, res) => {
   const url = req.url.includes("?") ? req.url.substr(0, req.url.lastIndexOf("?")) : req.url;
-  
   switch (url) {
     case routes.users:
       users(req, res, req.method);
@@ -19,13 +18,17 @@ function users(req, res, reqMethod) {
    const users = new Users();
  
    switch (reqMethod) {
-     case "GET":
-       break;
-     case "POST":
-       break;
-     case "PATCH":
-       break;
-     case "DELETE":
-       break;
+      case "GET":
+        users.getUsers(req,res);
+        break;
+      case "POST":
+        users.createUser(req,res)
+        break;
+      case "PATCH":
+        users.updateUser(req,res)
+        break;
+      case "DELETE":
+        // users.deleteUser(req,res)
+        break;
    }
  }

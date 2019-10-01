@@ -23,13 +23,13 @@ namespace auth.Controllers
 
         private IConfiguration _config;
         private string tokenString;
-        //private string picurl = url;
 
         public LoginController(IConfiguration config)
         {
             _config = config;
         }
 
+        //Get /loginAuthentication
         [Authorize]
         [HttpGet("loginAuthentication")]
         public IActionResult Get()
@@ -37,7 +37,6 @@ namespace auth.Controllers
             try
             {
                 var currentUser = HttpContext.User;
-
                 return Ok(true);
             }
             catch(Exception e)

@@ -1,14 +1,14 @@
-const { objectParser} = require('./utils/utils')
+const { objectParser } = require("../utils/utils");
 
-const obj = objectParser(process.argv)
-console.log(obj)
+const configObj = objectParser(process.argv);
+console.log(configObj);
 
 module.exports = {
-    PORT: process.env.PORT || obj.PORT || 9000,
-    HOST: process.env.HOST || obj.HOST || "0.0.0.0",
-    baseURI: process.env.baseURI || obj.baseURI || "/api",
-    database: {
-        DB_USER: process.env.DB_USER || obj.DB_USER || "admin",
-        DB_PASSWORD: process.env.DB_PASSWORD || obj.DB_PASSWORD || "root"
-    }
-}
+  PORT: process.env.PORT || configObj.PORT || 9000,
+  HOST: process.env.HOST || configObj.HOST || "0.0.0.0",
+  baseURI: process.env.baseURI || configObj.baseURI || "/api",
+  database: {
+    DB_USER: process.env.DB_USER || configObj.DB_USER || "admin",
+    DB_PASSWORD: process.env.DB_PASSWORD || configObj.DB_PASSWORD || "root"
+  }
+};

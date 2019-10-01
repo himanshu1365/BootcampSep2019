@@ -1,17 +1,21 @@
-const http = require('http')
-const { HOST, PORT }  = require('./config')
+const http = require("http");
+const { PORT, HOST } = require("./config");
+const { queryStringParser } = require("../utils/utils");
 
-const server = http.createServer((req,res)=>{
-    req.on("data", chunk =>{
-        req.body = JSON.parse(Buffer.from(chunk,"utf-8").toString())
-    })
-})
+const router = require("../routes/router");
 
-server.on("request", (req,res)=>{
-    if (req.url.includes("?")) queryStringParser(req);
-})
+const server = http.createServer((req, res) => {
+  req.on("data", chunk => {
+    req.body = JSON.parse(Buffer.from(chunk, "utf-8").toString());
+  });
+  router(req, res);
+});
 
-server.listen(HOST,PORT, err=>{
-    if(err) throw err;
-    console.log(`Running on: http://${HOST}:${PORT}`)
-})
+server.on("request", (req, res) => {
+  if (req.url.includes("?")) queryStringParser(req);
+});
+
+server.listen(PORT, HOST, err => {
+  if (err) throw err;
+  console.log(`Runnnig on: http://${HOST}:${PORT}`);
+});

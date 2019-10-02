@@ -1,16 +1,8 @@
-module.exports = {
-    getUsers,
-    createUsers,
-    updateUsers,
-    deleteUsers
+const { user } = require('../models')
+
+
+
+exports.getUsers = async function (req,res){
+    const response = await user.getUsers()
+    res.send(response)
 }
-
-async function getUsers(req,res){ 
-    res.send('ok')
-}
-
-async function createUsers(){ }
-
-async function updateUsers(){ }
-
-async function deleteUsers(){ }

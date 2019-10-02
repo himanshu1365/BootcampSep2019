@@ -1,16 +1,11 @@
 const express = require('express')
-const bodyParser = require('body-parser')
-const routers = require('../routes/routers')
-const { PORT, HOST } = require("./config");
+const route = require('../routers/routes')
+const app = express();
+const port = 3000
 
-const server = express()
-server.use(bodyParser({
-    extended: false
-}))
+app.use('/',route)
 
-server.use(routers);
 
-server.listen(PORT, HOST, err => {
-    if (err) throw err;
-    console.log(`Runnnig on: http://${HOST}:${PORT}`);
-});
+app.listen(port, ()=>{
+    console.log('Server is running at '+port)
+})

@@ -1,5 +1,1 @@
-const users = require("./users");
-
-module.exports = {
-    users
-}
+exports.users = require('./users')

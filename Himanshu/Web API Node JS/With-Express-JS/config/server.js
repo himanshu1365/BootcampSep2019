@@ -1,15 +1,16 @@
-const { objectParser } = require('../utils/utils')
+const express = require('express')
+const bodyParser = require('body-parser')
+const routers = require('../routes/routers')
+const { PORT, HOST } = require("./config");
 
-const obj = objectParser(process.argv)
-console.log(obj);
+const server = express()
+server.use(bodyParser({
+    extended: false
+}))
 
-module.exports = {
-    PORT: process.env.PORT || obj.PORT || 9000,
-    HOST: process.env.HOST || obj.HOST || "0.0.0.0",
-    baseURI: process.env.baseURI || obj.baseURI || "/api",
-    SECRET: "eyJhbGciOi",
-    database: {
-        DB_USER: process.env.DB_USER || obj.DB_USER || "admin",
-        DB_PASSWORD: process.env.DB_PASSWORD || obj.DB_PASSWORD || "root"
-    }
-};
+server.use(routers);
+
+server.listen(PORT, HOST, err => {
+    if (err) throw err;
+    console.log(`Runnnig on: http://${HOST}:${PORT}`);
+});

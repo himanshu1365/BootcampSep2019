@@ -8,9 +8,5 @@
     "start": "nodemon index.js --port 4000 --host 0.0.0.0 --db_user admin --db_password root --baseURI /api"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1"
-  }
+  "license": "ISC"
 }

@@ -29,22 +29,53 @@ class BaseController{
                     statusText: "OK",
                     message: "Client Inserted!"
                 };
-                res.end(JSON.stringify(response));
+                res.end(JSON.stringify(response))
             }).catch(err=>{
-                const response = { error: err };
-                res.setHeader("content-type", "application/json");
-                res.end(JSON.stringify(response));
+                const response = { error: err }
+                res.setHeader("content-type", "application/json")
+                res.end(JSON.stringify(response))
             })
         }).catch(err=>{
-            const response = { error: err };
-            res.setHeader("content-type", "application/json");
-            res.end(JSON.stringify(response));
+            const response = { error: err }
+            res.setHeader("content-type", "application/json")
+            res.end(JSON.stringify(response))
         })
     }
 
     async update(req,res){
-        let query  = req.query;
-        console.log(query)
+        let JSONdata = ""
+        req.on('data',chunk =>{
+            JSONdata += chunk.toString();
+        })
+        req.on('end',()=>{
+            JSONdata = JSON.parse(JSONdata)
+            fs.promises.readFile('input.json').then(data=>{
+                data = JSON.parse(data)
+                let headerID = Number.parseInt(Number.parseInt(req.headers.id))
+                for(var id in data){
+                    if(data[id]['id'] == headerID){
+                        console.log(data[id],req.headers.id)
+                        data[id] = JSONdata
+                    }
+                }
+                fs.promises.writeFile('input.json',JSON.stringify(data)).then(data=>{
+                    const response = {
+                        status: 200,
+                        statusText: "OK",
+                        message: "Client Updated"
+                    };
+                    res.end(JSON.stringify(response))
+                }).catch(err=>{
+                    const response = { error: err }
+                    res.setHeader("content-type", "application/json")
+                    res.end(JSON.stringify(response))
+                })
+            }).catch(err=>{
+                const response = { error: err }
+                res.setHeader("content-type", "application/json")
+                res.end(JSON.stringify(response))
+            })
+        })
     }
 }
  

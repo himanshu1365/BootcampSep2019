@@ -28,7 +28,7 @@ function users(req, res, reqMethod) {
         users.updateUser(req,res)
         break;
       case "DELETE":
-        // users.deleteUser(req,res)
+        users.deleteUser(req,res)
         break;
    }
  }

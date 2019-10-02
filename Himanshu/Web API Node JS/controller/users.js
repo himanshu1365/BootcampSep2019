@@ -10,7 +10,7 @@ class Users extends BaseController {
    }
 
    async getUsers(req, res) {
-      super.read(req,res);
+      super.read(req,res)
    }
 
    async createUser(req, res) {
@@ -18,15 +18,11 @@ class Users extends BaseController {
    }
 
    async updateUser(req, res) {
-      super.update(req,res);
+      super.update(req,res)
    }
 
    async deleteUser(req, res) {
-      try {
-      } 
-      catch (err) {
-         console.error(err);
-      }
+      super.delete(req,res)
    }
 }
 

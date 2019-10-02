@@ -51,11 +51,47 @@ class BaseController{
             JSONdata = JSON.parse(JSONdata)
             fs.promises.readFile('input.json').then(data=>{
                 data = JSON.parse(data)
-                let headerID = Number.parseInt(Number.parseInt(req.headers.id))
+                let headerID = Number.parseInt(req.headers.id)
                 for(var id in data){
                     if(data[id]['id'] == headerID){
-                        console.log(data[id],req.headers.id)
                         data[id] = JSONdata
+                    }
+                }
+                fs.promises.writeFile('input.json',JSON.stringify(data)).then(data=>{
+                    const response = {
+                        status: 200,
+                        statusText: "OK",
+                        message: "Client Updated"
+                    };
+                    res.end(JSON.stringify(response))
+                }).catch(err=>{
+                    const response = { error: err }
+                    res.setHeader("content-type", "application/json")
+                    res.end(JSON.stringify(response))
+                })
+            }).catch(err=>{
+                const response = { error: err }
+                res.setHeader("content-type", "application/json")
+                res.end(JSON.stringify(response))
+            })
+        })
+    }
+
+    async delete(req,res){
+        let JSONData = ""
+        req.on('data',chunk =>{
+            JSONdata += chunk.toString();
+        })
+        req.on('end',()=>{
+            fs.promises.readFile('input.json').then(data =>{
+                data = JSON.parse(data)
+                let headerID = Number.parseInt(req.headers.id)
+                for(var id in data){
+                    if(data[id]['id'] == headerID){
+
+                        let index = data.indexOf(data[id])
+                        console.log(index)
+                        data.splice(index,1)
                     }
                 }
                 fs.promises.writeFile('input.json',JSON.stringify(data)).then(data=>{
@@ -80,14 +116,3 @@ class BaseController{
 }
  
  exports.BaseController = BaseController;
-
-
- function readFile() {
-    const dbPath = path.join(__dirname, "../", "input.json");
-    return fs.promises.readFile(dbPath, "utf-8");
-  }
-  
-  function writeFile(data) {
-    const dbPath = path.join(__dirname, "../", "input.json");
-    return fs.promises.writeFile(dbPath, JSON.stringify(data));
-  }

@@ -1,7 +1,6 @@
 const { objectParser } = require("../utils/utils");
 
 const configObj = objectParser(process.argv);
-console.log(configObj);
 
 module.exports = {
   PORT: process.env.PORT || configObj.PORT || 9000,

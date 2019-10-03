@@ -5,10 +5,12 @@ const { PORT, HOST } =require('./config')
 
 const app = express()
 
-app.use(router())
-app.use(bodyParser({
-    extended: false
+app.use(bodyParser.urlencoded({
+    extended: true
 }))
+app.use(bodyParser.json())
+
+app.use(router())
 
 app.listen(PORT,HOST, err=>{
     if(err) throw err;

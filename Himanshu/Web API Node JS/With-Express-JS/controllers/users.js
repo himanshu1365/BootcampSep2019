@@ -3,7 +3,8 @@ const { user } = require('../models')
 
 module.exports = {
     getUsers,
-    newUsers
+    newUsers,
+    updateUsers
 }
 async function getUsers(req,res){
     try{
@@ -19,11 +20,19 @@ async function getUsers(req,res){
 async function newUsers(req,res){
     try{
         let response = await user.newUsers(req,res);
-        //console.log('response : '+response)
-        response = JSON.parse(response)
         res.send(response)
     }
     catch(err){
         console.error(err)
+    }
+}
+
+async function updateUsers(req,res){
+    try{
+        let response = await user.updateUsers(req,res);
+        res.send(response)
+    }
+    catch(err){
+        console.log(err)
     }
 }

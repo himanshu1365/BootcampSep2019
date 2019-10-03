@@ -1,8 +1,11 @@
 const { user } = require('../models')
 
 
-
-exports.getUsers = async function (req,res){
-    const response = await user.getUsers()
+module.exports = {
+    getUsers
+}
+function getUsers(req,res){
+    console.log('hello')
+    const response = user.getUsers()
     res.send(response)
 }

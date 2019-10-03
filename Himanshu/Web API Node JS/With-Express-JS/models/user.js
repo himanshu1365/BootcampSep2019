@@ -1,5 +1,4 @@
-
-
+const fs = require('fs')
 const users= []
 
 exports.getUsers = async function(req,res){

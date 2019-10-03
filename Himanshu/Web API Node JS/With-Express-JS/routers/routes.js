@@ -1,5 +1,5 @@
 const express = require('express')
-const { getUsers, newUsers,updateUsers } = require('../controllers/users')
+const { getUsers, newUsers,updateUsers,deleteUser } = require('../controllers/users')
 const { baseURI } = require('../config/config')
 
 module.exports =()=> {
@@ -8,6 +8,6 @@ module.exports =()=> {
     router.get(`${baseURI}/users`, getUsers)
     router.post(`${baseURI}/users`,newUsers)
     router.put(`${baseURI}/users`, updateUsers)
-    
+    router.delete(`${baseURI}/users`, deleteUser)
     return router;
 }

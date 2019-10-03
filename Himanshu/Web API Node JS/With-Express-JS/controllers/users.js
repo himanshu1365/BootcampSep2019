@@ -4,7 +4,8 @@ const { user } = require('../models')
 module.exports = {
     getUsers,
     newUsers,
-    updateUsers
+    updateUsers,
+    deleteUser
 }
 async function getUsers(req,res){
     try{
@@ -19,7 +20,7 @@ async function getUsers(req,res){
 
 async function newUsers(req,res){
     try{
-        let response = await user.newUsers(req,res);
+        let response = await user.newUsers(req,res)
         res.send(response)
     }
     catch(err){
@@ -29,7 +30,17 @@ async function newUsers(req,res){
 
 async function updateUsers(req,res){
     try{
-        let response = await user.updateUsers(req,res);
+        let response = await user.updateUsers(req,res)
+        res.send(response)
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+async function deleteUser(req,res){
+    try{
+        let response = await user.deleteUser(req,res)
         res.send(response)
     }
     catch(err){

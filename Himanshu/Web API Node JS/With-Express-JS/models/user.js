@@ -35,6 +35,7 @@ exports.updateUsers = async function(req,res){
     for(var i=0;i<filedata.length;i++){
         if(filedata[i]['id'] == req.query.id){
             filedata[i][key] = body[key]
+            break
         }
     }
     writeFile(filedata)
@@ -43,6 +44,28 @@ exports.updateUsers = async function(req,res){
         status: 200,
         statusText: 'Ok',
         message: "Updated data"
+    })
+}
+
+exports.deleteUser = async function(req,res){
+    let filedata,index
+
+    filedata = await readFile()
+
+    filedata = JSON.parse(filedata)
+    for(var i=0;i<filedata.length;i++){
+        if(filedata[i]['id'] == req.query.id){
+            index = filedata.indexOf(filedata[i])
+            filedata.splice(index,1)
+            break
+        }
+    }
+    writeFile(filedata)
+
+    return({
+        status: 200,
+        statusText: 'Ok',
+        message: "Deleted data"
     })
 }
 

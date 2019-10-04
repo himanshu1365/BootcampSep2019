@@ -1,7 +1,8 @@
 const express = require('express')
 const Users = require('../controllers/users')
-const { baseURI,basePath } = require('../config/config')
-const path = require('path')
+const { baseURI } = require('../config/config')
+const { checkAuthentication } = require('../auth/auth')
+
 
 module.exports =()=> {
     const router = express.Router();
@@ -15,5 +16,16 @@ module.exports =()=> {
     router.post(`${baseURI}/database`,Users.writeUsersToDB)
     router.put(`${baseURI}/database`,Users.updateUsersToDB)
     router.delete(`${baseURI}/database`,Users.deleteUserFromDB)
+
+    router.get('/login',(req,res)=>{
+        return res.render('login.ejs')
+    })
+
+    router.post('/login/loginAuthentication',(req,res)=>{
+        const logindata = req.body
+        if(logindata.inputUsername == 'himanshu' && logindata.inputPassword == 'himanshu'){
+            checkAuthentication(req,res);
+        }
+    })
     return router;
 }

@@ -1,18 +1,19 @@
 const express = require('express')
-const { getUsers, newUsers, updateUsers, deleteUser, getUsersFromDB, writeUsersToDB, updateUsersToDB,deleteUserFromDB } = require('../controllers/users')
-const { baseURI } = require('../config/config')
+const Users = require('../controllers/users')
+const { baseURI,basePath } = require('../config/config')
+const path = require('path')
 
 module.exports =()=> {
     const router = express.Router();
 
-    router.get(`${baseURI}/users`, getUsers)
-    router.post(`${baseURI}/users`,newUsers)
-    router.put(`${baseURI}/users`, updateUsers)
-    router.delete(`${baseURI}/users`, deleteUser)
+    router.get(`${baseURI}/users`, Users.getUsers)
+    router.post(`${baseURI}/users`,Users.newUsers)
+    router.put(`${baseURI}/users`, Users.updateUsers)
+    router.delete(`${baseURI}/users`, Users.deleteUser)
 
-    router.get(`${baseURI}/database`,getUsersFromDB)
-    router.post(`${baseURI}/database`,writeUsersToDB)
-    router.put(`${baseURI}/database`,updateUsersToDB)
-    router.delete(`${baseURI}/database`,deleteUserFromDB)
+    router.get(`${baseURI}/database`,Users.getUsersFromDB)
+    router.post(`${baseURI}/database`,Users.writeUsersToDB)
+    router.put(`${baseURI}/database`,Users.updateUsersToDB)
+    router.delete(`${baseURI}/database`,Users.deleteUserFromDB)
     return router;
 }

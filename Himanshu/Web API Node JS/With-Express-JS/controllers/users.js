@@ -1,11 +1,14 @@
 const { user } = require('../models')
 
-
 module.exports = {
     getUsers,
     newUsers,
     updateUsers,
-    deleteUser
+    deleteUser,
+    getUsersFromDB,
+    writeUsersToDB,
+    updateUsersToDB,
+    deleteUserFromDB
 }
 async function getUsers(req,res){
     try{
@@ -42,6 +45,48 @@ async function deleteUser(req,res){
     try{
         let response = await user.deleteUser(req,res)
         res.send(response)
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+async function getUsersFromDB(req,res){
+    try{
+        let response = await user.getUsersFromDB(req,res);
+        console.log(response)
+        res.send(JSON.stringify(response))
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+async function writeUsersToDB(req,res){
+    try{
+        let response = await user.writeUsersToDB(req,res);
+        res.send(JSON.stringify(response))
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+
+async function updateUsersToDB(req,res){
+    try{
+        let response = await user.updateUsersToDB(req,res)
+        res.end(JSON.stringify(response))
+    }
+    catch(err){
+        console.log(err)
+    }   
+}
+
+async function deleteUserFromDB(req,res){
+    try{
+        let response = await user.deleteUserFromDB(req,res)
+        res.end(JSON.stringify(response))
     }
     catch(err){
         console.log(err)

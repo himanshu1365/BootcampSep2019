@@ -13,6 +13,9 @@ mongoose.connection.once('open',()=>{
     console.log('Connection erorr : ',error)
 })
 
+module.exports = {
+    mongoose
+}
 
 //Connection Using MongoClient
 // const url = 'mongodb://127.0.0.1:27017'

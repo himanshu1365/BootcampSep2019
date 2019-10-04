@@ -1,4 +1,5 @@
 const fs = require('fs')
+const  usersModel  = require('../models/model')
 
 exports.getUsers = async function(req,res){
     return readFile();
@@ -75,4 +76,25 @@ function readFile(){
 
 function writeFile(new_data){
     return fs.promises.writeFile('input.json',JSON.stringify(new_data));
+}
+
+exports.getUsersFromDB = async function(req,res){
+    return await usersModel.find()
+}
+
+exports.writeUsersToDB = async function(req,res){
+    let body = req.body
+    let jsondetail = new usersModel(body)
+    return await jsondetail.save()
+}
+
+exports.updateUsersToDB = async function(req,res){
+    let _id = req.query.id
+    let toUpdate = req.body
+    return await usersModel.findByIdAndUpdate(_id,toUpdate,{new: true});
+}
+
+exports.deleteUserFromDB = async function(req,res){
+    let _id = req.query.id
+    return await usersModel.findByIdAndRemove(_id);
 }

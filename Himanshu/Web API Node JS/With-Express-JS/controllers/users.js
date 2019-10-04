@@ -54,11 +54,10 @@ async function deleteUser(req,res){
 async function getUsersFromDB(req,res){
     try{
         let response = await user.getUsersFromDB(req,res);
-        console.log(response)
         res.send(JSON.stringify(response))
     }
     catch(err){
-        console.log(err)
+        res.end(JSON.stringify(err))
     }
 }
 
@@ -68,7 +67,7 @@ async function writeUsersToDB(req,res){
         res.send(JSON.stringify(response))
     }
     catch(err){
-        console.log(err)
+        res.end(JSON.stringify(err))
     }
 }
 
@@ -76,19 +75,19 @@ async function writeUsersToDB(req,res){
 async function updateUsersToDB(req,res){
     try{
         let response = await user.updateUsersToDB(req,res)
-        res.end(JSON.stringify(response))
+        res.send(JSON.stringify(response))
     }
     catch(err){
-        console.log(err)
+        res.end(JSON.stringify(err))
     }   
 }
 
 async function deleteUserFromDB(req,res){
     try{
         let response = await user.deleteUserFromDB(req,res)
-        res.end(JSON.stringify(response))
+        res.send(JSON.stringify(response))
     }
     catch(err){
-        console.log(err)
+        res.end(JSON.stringify(err))
     }
 }

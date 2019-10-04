@@ -1,7 +1,7 @@
 const {MONGO_HOSTNAME,MONGO_PORT, MONGO_DB} = require('./keys')
 const mongoose = require('mongoose')
-const MongoClient = require('mongodb').MongoClient;
-const format = require('util').format
+//const MongoClient = require('mongodb').MongoClient;
+//const format = require('util').format
 
 //Connection Using Mongoose
 const url = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`;

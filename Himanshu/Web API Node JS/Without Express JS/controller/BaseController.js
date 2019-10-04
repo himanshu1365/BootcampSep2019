@@ -51,6 +51,7 @@ class BaseController{
         let msg = "Data deleted"
         filedata = await readFile(req,res)
         filedata = JSON.parse(filedata)
+        console.log(req.query)
         for(var i=0;i<filedata.length;i++){
             if(filedata[i]['id'] == req.query.id){
                 index = filedata.indexOf(filedata[i])

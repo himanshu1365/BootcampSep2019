@@ -83,18 +83,42 @@ exports.getUsersFromDB = async function(req,res){
 }
 
 exports.writeUsersToDB = async function(req,res){
-    let body = req.body
-    let jsondetail = new usersModel(body)
-    return await jsondetail.save()
+    let response,body,jsondetail
+    body = req.body
+    jsondetail = new usersModel(body)
+    try{
+        response = await jsondetail.save()
+        return response
+    }
+    catch(err){
+        response = {error: ''}
+        return response
+    }
 }
 
 exports.updateUsersToDB = async function(req,res){
-    let _id = req.query.id
-    let toUpdate = req.body
-    return await usersModel.findByIdAndUpdate(_id,toUpdate,{new: true});
+    let _id, toUpdate,response;
+    _id = req.query.id
+    toUpdate = req.body
+    try{
+        response = await usersModel.findByIdAndUpdate(_id,toUpdate,{new: true})
+        return response
+    }
+    catch(err){
+        response = {error: ''}
+        return response
+    }
 }
 
 exports.deleteUserFromDB = async function(req,res){
     let _id = req.query.id
-    return await usersModel.findByIdAndRemove(_id);
+    try{
+        response = await usersModel.findByIdAndRemove(_id)
+        return response;
+    }
+    catch(err){
+        response = {error: ''}
+        return response
+    }
+
 }

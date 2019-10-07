@@ -22,11 +22,24 @@ module.exports =()=> {
     })
 
     router.get('/home',(req,res)=>{
+        console.log('Trying to Authorize')
         if(checkAuthentication(req,res)){
-            return res.render('home.ejs')    
+            console.log('User is Authorized')
+            return res.send({
+                message:"Redirected to Home Page"
+            }).redirect('home.ejs')
+
+            //return Ok("Redirected to Home Page")
+            //return res.render('home.ejs')    
         }
         else{
-            return res.redirect('/login')
+            console.log('User is not Authorized')
+            return res.send({
+                message:"Session Timed Out"
+            }).redirect('/login')
+
+            //return Ok("Session Timed Out")
+            //return res.redirect('/login')
         }
         
     })
@@ -35,7 +48,8 @@ module.exports =()=> {
         console.log('Trying to Authenticate')
         const logindata = req.body
         if(logindata.inputUsername == 'himanshu' && logindata.inputPassword == 'himanshu'){
-            generateNewToken(req,res);
+            generateNewToken(req,res)
+            console.log('Authentication Done Successfully')
             return res.redirect('/home')
         }
         else{

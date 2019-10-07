@@ -3,7 +3,7 @@ const { SECRET } = require('../config/config');
 const localStorage = require('localStorage')
 
 function generateNewToken(req,res){
-    const token = webtoken.sign({token: req.body.inputUsername},SECRET,{expiresIn: 40000})
+    const token = webtoken.sign({token: req.body.inputUsername},SECRET,{expiresIn: 36000})
     tokenValue = {'token':token}
     localStorage.setItem('authToken',JSON.stringify(tokenValue))
 }

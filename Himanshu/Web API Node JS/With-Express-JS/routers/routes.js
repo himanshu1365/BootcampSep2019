@@ -27,10 +27,7 @@ module.exports =()=> {
             console.log('User is Authorized')
             return res.send({
                 message:"Redirected to Home Page"
-            }).redirect('home.ejs')
-
-            //return Ok("Redirected to Home Page")
-            //return res.render('home.ejs')    
+            }).redirect('home.ejs')    
         }
         else{
             console.log('User is not Authorized')

@@ -31,5 +31,4 @@ const questionDetail = mongoose.model('question',questionDetails)
 
 module.exports = {
 	questionDetail
-
 }
